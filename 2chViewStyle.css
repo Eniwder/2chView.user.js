@@ -1,0 +1,96 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("2ch.net") {
+
+    /* リンクの色(スレ一覧表示部分) */  
+#trad>a{
+    display:block; 
+    background-color:#888;
+}
+#trad>a:link { color: #E3E3E3; }
+#trad>a:visited { color: #CC9933; }
+#trad>a:hover { color:#FFF; }
+#trad>a:active { color: #CC9933; }
+
+/* ここから広告除去 */
+#trad> .js{
+    display:none; 
+}
+.js--ad--top{
+    display:none;
+}
+.ad--right{
+    display:none;
+}
+.js--ad--bottom{
+    display:none;
+}
+/* ここここまで広告除去 */
+
+/* レス */
+html {
+    background-color:#444;
+}
+/* レス */   
+.thread{
+} 
+
+/* レス */
+.thread div{
+    border:solid 4px #cd853f; 
+    margin:8px;
+    padding:8px;
+    padding-bottom:-100px;
+    border-radius: 8px 8px 8px 8px;
+    background-color:#888;
+    color:#E3E3E3;
+}
+    
+/* リンクの色 */    
+a:link { color: #FF9933; }
+a:visited { color: #CC9933; }
+a:hover { color:#CC9933; }
+a:active { color: #CC9933; }
+   
+/* スレタイ */ 
+h1{
+    color:#E7E7E7 !important;
+}
+    
+/* 名無し欄 */
+.thread div font,b,span{
+    color:#666;       
+}
+/* 書き込みエリア */ 
+#writeDiv{
+    width:360px;
+    height:220px;
+    top: 80px;
+    right:0px;
+    position: fixed;
+    z-index: 999;
+}
+/* 書き込みフォーム */     
+form{
+    width:360px;
+    height:120px;
+}
+/* 書き込みテキストエリア */ 
+form textarea{
+    width:340px;
+    col:"50";
+    height:80px;
+    wrap:soft;
+}
+/* 書き込み結果表示部分 */ 
+#writeFrame{
+    width:240px;
+    height:80px;
+}
+    
+/* AA用フォントの設定 */
+.AA{
+    font-family:'ＭＳ Ｐゴシック';
+}    
+
+}
