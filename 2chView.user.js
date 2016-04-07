@@ -2,10 +2,10 @@
 // @name        2chを使いやすく
 // @namespace   Eniwder
 // @include     http://*.2ch.net/test/read.cgi/*
-// @version     1.81
+// @include     http://*.shitaraba.net/bbs/read.cgi/*
+// @version     1.82
 // @grant       none
 // ==/UserScript==
-
 /////////////
 // 汎用定義 //
 /////////////
@@ -44,7 +44,7 @@ function extract(b){   // 人気レス抽出
             if(!resIdRegx.test(divs[i].id)) continue;
             divs[i].style.display = "block";
         }
-        b.value="人気レス抽出"
+        b.value="人気抽出"
     }else{
         for(var i=0;i<divs.length;i++){
             if(!resIdRegx.test(divs[i].id)) continue;
@@ -111,7 +111,6 @@ dtDd2Div($tag('dt'),$tag('dd'))
 // レス参照配列初期化
 var recvRef = [];
 for(var i=0;i<1000;i++) recvRef[i] = [];
-
 // a要素を色々置換
 aElemReplace($tag('a'));
 
@@ -147,7 +146,7 @@ function writeAreaSetting(){
     // 赤レス抽出ボタン設置
     var extractButton = document.createElement("input");
     extractButton.setAttribute("type","button");
-    extractButton.setAttribute("value","人気レス抽出");
+    extractButton.setAttribute("value","人気抽出");
     extractButton.setAttribute("onclick","extract(this)");
     extractButton.style.margin="0px 0px 0px 5px";
     writeform.insertBefore(extractButton,$name('mail')[0].nextSibling);
@@ -172,7 +171,7 @@ function dtDd2Div(dts,dds){
     var resNumber = /([0-9]+)/;
     var mail = /\<a href="mailto:(.*)"\>(.+)：/ 
     for(var i = 0, resLen = dts.length; i < resLen; i++){
-        var id = dts[i].innerHTML.match(idRegex)[1];
+        var id = dts[i].innerHTML.match(idRegex) ? dts[i].innerHTML.match(idRegex)[1] : "null";
         if(!resOfId[id])resOfId[id] = 0;
         resOfId[id]++;   // IDにDIV要素を記憶
         var aaclass = AARegex.test(dds[i].innerHTML) ? " AA" : ""　;
@@ -281,8 +280,7 @@ function divElemReplace(divs){
     // ID部分を置換
     function idReplace(div){
         var idRegexg = /ID:([0-9A-z\+\/\?]+)/g;
-        div.innerHTML=div.innerHTML.replace(idRegexg,idPrint);
-
+           div.innerHTML=div.innerHTML.replace(idRegexg,idPrint);
         // IDをマウスオーバーでそのIDの書き込みをポップアップするようにする
         function idPrint(str,id,offset,s){
            if(!resOfId[id])return "ID:"+id;
@@ -299,4 +297,3 @@ function divElemReplace(divs){
         }
     }
 }
-
